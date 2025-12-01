@@ -1,0 +1,51 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /retention_metrics/{document} {
+      allow create: if request.auth.uid == request.resource.data.metric_type;
+      allow read: if request.auth.uid == resource.data.metric_type;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /regions/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /regions/{parent}/recipes/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /{path=**}/recipes/{document} {
+      allow read: if true;
+    }
+
+
+    match /Users/{parent}/recipeCompletion/{document} {
+      allow create: if request.auth.uid == parent;
+      allow read: if request.auth.uid == parent;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /Users/{parent}/uPref/{document} {
+      allow create: if request.auth.uid == parent;
+      allow read: if request.auth.uid == parent;
+      allow write: if request.auth.uid == parent;
+      allow delete: if request.auth.uid == parent;
+    }
+
+    match /Users/{document} {
+      allow create: if request.auth.uid == request.resource.data.uid;
+      allow read: if request.auth.uid == resource.data.uid;
+      allow write: if false;
+      allow delete: if false;
+    }
+  }
+}
