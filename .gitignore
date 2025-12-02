@@ -1,0 +1,41 @@
+# Flutter/Dart
+.dart_tool/
+.packages
+build/
+*.iml
+.idea/
+.vscode/
+*.log
+pubspec.lock
+
+# Environment & Secrets
+.env
+.env.*
+*.pem
+*.key
+secrets/
+credentials/
+
+# Personal Development Documentation
+# (Keep in old repo, not for grading)
+docs/SECRETS.md
+docs/FLUTTERFLOW_GUIDE.md
+docs/ARCHITECTURE.md
+docs/CLAUDE.md
+docs/runbooks/
+docs/guides/
+docs/architecture/
+docs/implementation/
+
+# FlutterFlow working files
+flutterflow-yamls/
+*.har
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
